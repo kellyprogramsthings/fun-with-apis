@@ -1,0 +1,1 @@
+export const BIN_ID = "6119a4c2e1b0604017b0f0bd";
