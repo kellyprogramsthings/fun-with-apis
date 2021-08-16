@@ -1,9 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Button, Container, Input, Label, Modal, ModalBody, ModalFooter, Table } from "reactstrap"
+import { Button, Container, Input, Label, Modal, ModalBody, 
+  ModalFooter, Table } from "reactstrap"
 import axios from "axios";
 import _ from "lodash";
-import { BIN_ID } from "../utils/constants"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BIN_ID } from "../utils/constants"
 
 let jsonbinKey = process.env.REACT_APP_JSONBIN_APIKEY;
 
@@ -13,7 +14,7 @@ const yah = () => {
       <FontAwesomeIcon icon="check" style={{color: "green"}} /> Yah 
     </Fragment>
   )
-}
+};
 
 const nah = () => {
   return (
@@ -21,12 +22,12 @@ const nah = () => {
       <FontAwesomeIcon icon="times" style={{color: "red"}} /> Nah
     </Fragment>
   )
-}
+};
 
 const jsonbinPutHeader = {
   "X-Master-Key": jsonbinKey,
   "Content-Type": "application/json"
-}
+};
 
 const Jsonbin = () => {
   const [binData, setBinData] = useState(null);
@@ -52,19 +53,15 @@ const Jsonbin = () => {
 
   const saveBinData = () => {
     saveUrl = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-    console.log("we clicked the button but nothing happened :(")
+    console.log("we clicked the button but nothing happened :(");
   }
 
   const onSaveRow = () => {
     let newBinData = {...binData};
-    if (newBinData.characters.new && newRow) {
-      newBinData.characters.new.push(newRow)
+    if (!newBinData.characters.new && newRow) {
+      newBinData.characters.new = {};
     }
-    else {
-      // this looks wrong
-      newBinData.characters.new = {}
-      newBinData.characters.new.push(newRow)
-    }
+    newBinData.characters.new.push(newRow);
     setBinData(newBinData);
     toggle();
   }
