@@ -32,7 +32,7 @@ const Giphy = () => {
       <Row className="pt-3">
         <Col>
           {imageSrc &&
-            <img title="Result from Giphy Search" src={imageSrc} />
+            <img alt="Result from Giphy Search" src={imageSrc} />
           }
         </Col>
       </Row>
