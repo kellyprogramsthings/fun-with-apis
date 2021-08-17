@@ -14,6 +14,12 @@ const Giphy = () => {
 
   const onGiphySubmit = () => {
     console.log("we clicked the button but nothing happened :(");
+    axios.get(giphyGetUrl(inputBox))
+      .then((response) => {
+        let id = response.data.data.id;
+        let url = `https://media.giphy.com/media/${id}/giphy.gif`;
+        setImageSrc(url);
+      })
   }
 
   const onInputChange = (event) => {

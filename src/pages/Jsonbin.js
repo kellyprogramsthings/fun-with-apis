@@ -52,8 +52,11 @@ const Jsonbin = () => {
   }
 
   const saveBinData = () => {
-    let saveUrl = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+    let saveUrl = `https://api.jsonbin.io/v3/b3/${BIN_ID}`;
     console.log("we clicked the button but nothing happened :(");
+    axios.put(saveUrl, binData, jsonbinPutHeader)
+      .then(() => console.log("it posted yay! someday put a pop up notification for the user here"))
+      .catch(e => console.log("We had an error: ", e));
   }
 
   const onSaveRow = () => {
