@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Button, Container, Input, Label, Modal, ModalBody, 
-  ModalFooter, Table } from "reactstrap"
+import { Button, Col, Container, Input, Label, Modal, ModalBody, 
+  ModalFooter, Row, Table } from "reactstrap"
 import axios from "axios";
 import _ from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +52,7 @@ const Jsonbin = () => {
   }
 
   const saveBinData = () => {
-    saveUrl = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+    let saveUrl = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     console.log("we clicked the button but nothing happened :(");
   }
 
@@ -72,11 +72,16 @@ const Jsonbin = () => {
   }
 
   return (
-    <Container>
-      {/* this is backwards because of the float and I don't have a Melissa handy to tell me how to fix it */}
-      <Button className="float-right ml-1" color="success" onClick={saveBinData}>Save Your Incorrect Data to My Jsonbin...!</Button>
-      <Button className="float-right" color="primary" onClick={toggle}>Add Incorrect Data to My Table...!</Button>
-      <Table>
+    <Container className="mt-2">
+      <Row>
+        <Col>
+          <div className="float-right">
+            <Button color="primary" onClick={toggle}>Add Incorrect Data to My Table...!</Button>
+            <Button color="success" className="ml-1" onClick={saveBinData}>Save Your Incorrect Data to My Jsonbin...!</Button>
+          </div>
+        </Col>
+      </Row>
+      <Table className="mt-2">
         <thead>
           <tr>
             <th width="30%">
