@@ -13,7 +13,6 @@ const Giphy = () => {
   }
 
   const onGiphySubmit = () => {
-    console.log("we clicked the button but nothing happened :(");
     axios.get(giphyGetUrl(inputBox))
       .then((response) => {
         let id = response.data.data.id;
